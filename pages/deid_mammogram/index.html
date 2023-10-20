@@ -418,8 +418,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kskit.dicom.deid_mammogram.get_rule" class="md-nav__link">
-    get_rule()
+  <a href="#kskit.dicom.deid_mammogram.get_general_rule" class="md-nav__link">
+    get_general_rule()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kskit.dicom.deid_mammogram.get_specific_rule" class="md-nav__link">
+    get_specific_rule()
   </a>
   
 </li>
@@ -462,11 +469,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../about_epiconcept/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    About
+    About Epiconcept
   </span>
   
 
@@ -577,8 +584,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kskit.dicom.deid_mammogram.get_rule" class="md-nav__link">
-    get_rule()
+  <a href="#kskit.dicom.deid_mammogram.get_general_rule" class="md-nav__link">
+    get_general_rule()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kskit.dicom.deid_mammogram.get_specific_rule" class="md-nav__link">
+    get_specific_rule()
   </a>
   
 </li>
@@ -1372,8 +1386,8 @@ detected by kskit.</p>
 
 
 
-<h6 id="kskit.dicom.deid_mammogram.get_rule" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">get_rule</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span></code>
+<h6 id="kskit.dicom.deid_mammogram.get_general_rule" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">get_general_rule</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span></code>
 
 </h6>
 
@@ -1465,28 +1479,120 @@ unknown tags and will always return RETIRER (= REMOVE) for all tags not found in
 <details class="example">
 <summary>Example</summary>
 <p><strong>Example n°1</strong>: Retrieve a rule for a tag inside the recipe</p>
-<p><div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_rule_for_known_tag.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<p><div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_general_rule_for_known_tag.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span>
 <span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">kskit.dicom.deid_mammogram</span> <span class="kn">import</span> <span class="n">load_recipe</span><span class="p">,</span> <span class="n">get_rule</span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">kskit.dicom.deid_mammogram</span> <span class="kn">import</span> <span class="n">load_recipe</span><span class="p">,</span> <span class="n">get_general_rule</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">load_recipe</span><span class="p">()</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">rule</span> <span class="o">=</span> <span class="n">get_rule</span><span class="p">(</span><span class="s2">&quot;0x00020000&quot;</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">rule</span> <span class="o">=</span> <span class="n">get_general_rule</span><span class="p">(</span><span class="s2">&quot;0x00020000&quot;</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>CONSERVER
 </span></code></pre></div></p>
 <p><strong>Example n°2</strong>: Retrieve a rule for a tag that is not declared inside the recipe</p>
-<p><div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_rule_for_unknown_tag.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<p><div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">get_general_rule_for_unknown_tag.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
 <span class="normal"><a href="#__codelineno-10-3">3</a></span>
-<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">kskit.dicom.deid_mammogram</span> <span class="kn">import</span> <span class="n">load_recipe</span><span class="p">,</span> <span class="n">get_rule</span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">kskit.dicom.deid_mammogram</span> <span class="kn">import</span> <span class="n">load_recipe</span><span class="p">,</span> <span class="n">get_general_rule</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">recipe</span> <span class="o">=</span> <span class="n">load_recipe</span><span class="p">()</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">rule</span> <span class="o">=</span> <span class="n">get_rule</span><span class="p">(</span><span class="s2">&quot;0x00026666&quot;</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">rule</span> <span class="o">=</span> <span class="n">get_general_rule</span><span class="p">(</span><span class="s2">&quot;0x00026666&quot;</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>RETIRER
 </span></code></pre></div></p>
 </details>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h6 id="kskit.dicom.deid_mammogram.get_specific_rule" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">get_specific_rule</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">recipe</span><span class="p">)</span></code>
+
+</h6>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>Extract the specific rule from a list of tags in <code>recipe.json</code> if there is one.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>tags</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A list of DICOM tags. The parent attribute is always before the child attribute. 
+For instance, if we take ['AAA', 'BBB', 'CCC'], 'AAA' is a sequence containing 'BBB' and 'BBB'
+is a sequence containing the attribute 'CCC'.  </p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>recipe</code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A Python dictionary containing recipe elements. See <code>load_recipe()</code></p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The action associated to this DICOM tag in the provided recipe. Same values as <code>get_general_rules</code>. 
+It can also return <code>None</code> if no specific rules are defined for tags inside the list.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>
 
 
 
