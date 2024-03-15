@@ -22,7 +22,7 @@ setup(
         "cryptography",
         "easyocr==1.4.1",
         "torch==1.11.0",
-        "torchvision==0.12.0"
+        "torchvision==0.12.0",
         "opencv-python==4.5.4.60",
         "opencv-python-headless==4.5.4.60",
         "pynetdicom==1.5.7",

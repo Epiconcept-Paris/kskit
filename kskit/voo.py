@@ -54,7 +54,7 @@ def voo_type(columns):
   for (name, column) in columns.items():
     d_type = column.type
     if d_type == "string":
-      yield (name, numpy.str)
+      yield (name, "string")
     elif d_type == "integer":
       yield (name, "Int64")
     elif d_type == "primary_key":
@@ -68,9 +68,9 @@ def voo_type(columns):
     elif d_type == False:
       yield (name, "string")
     elif d_type == "date":
-      yield (name, numpy.datetime64)
+      yield (name, "datetime64[ns]")
     elif d_type == "datetime":
-      yield (name, numpy.datetime64)
+      yield (name, "datetime64[ns]")
     else:
       raise NotImplementedError(f"Parsing type '{d_type}' is not yet implemented")
 
