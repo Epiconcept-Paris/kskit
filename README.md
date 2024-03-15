@@ -8,10 +8,24 @@ Initially conceived for french breast cancer screening program during the execut
 
 kskit documentation can be found at: [https://epiconcept-paris.github.io/kskit/](https://epiconcept-paris.github.io/kskit/)
 
+### Prerequisites
+
+**Ubuntu**
+
+For using `opencv`, you might need to install:
+```bash
+sudo apt insall ffmpeg libsm6 libxext6  -y
+```
+
+For using `pyzbar`:
+```bash
+sudo apt install zbar-tools
+```
+
 ### Installation
 
 ```bash
-pip install kskit
+poetry install
 ```
 
 ### Installation for contributors
@@ -23,17 +37,23 @@ git clone https://github.com/Epiconcept-Paris/kskit.git
 cd kskit
 ```
 
-2. Create and activate a virtual environment
+2. Install kskit
 
 ```bash
-python3 -m venv env
-. env/bin/activate
+poetry install --dev-dependency
 ```
 
-3. Install kskit
+3. Launch tests
 
+First method
 ```bash
-pip install -e .
+poetry shell
+pytest
+```
+
+Second method
+```bash
+poetry pytest
 ```
 
 ### Checking installation
@@ -53,7 +73,7 @@ deidentify_image_png(
 ### Installation
 
 ```bash
-pip install -e .[quality-tools]
+poetry install --dev-dependency
 ```
 
 ### Usage
