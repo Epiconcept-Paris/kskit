@@ -1,3 +1,8 @@
+# This project has been archived!!
+
+The deidentification features have been moved to the [deidcm](https://github.com/Epiconcept-Paris/deidcm) project
+The rest of the features have been included into the [deep.piste](https://github.com/Epiconcept-Paris/deep.piste) project
+
 ## kskit module
 
 Functionality for cancer screening data pipeline including DICOM image importing and processing.
